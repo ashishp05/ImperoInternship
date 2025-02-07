@@ -1,0 +1,24 @@
+<%- include("../comon/head.ejs") %>
+
+</head>
+<body>
+    
+    <div class="container-main">
+        <%- include("../comon/navigation.ejs") %>
+        <div class="main">
+    
+            <% if(isLoggedIn) { %>
+                
+                <div class="logindata">
+                    <h2> Hello , <%= userName.name %></h2>
+                    <p> you are login with , <%= userName.email %></p>
+                    <br>
+                    <h1 class="heading">This is HomePage.</h1>
+                </div>                 
+            <% } %>
+           
+                
+         </div>
+    </div>
+</body>
+</html>

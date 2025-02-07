@@ -1,0 +1,47 @@
+<%- include("../comon/head.ejs") %>
+
+</head>
+<body> 
+   <%- include("../comon/navigation.ejs") %>
+   <div class="container">
+        <form action="/signup" class="form-control" method="post">
+
+            <div class="form-main">
+              <div class="form-fname">
+                 <label for="name">Enter Name</label>
+                 <input type="text" name="name" id="name">
+              </div>
+
+             
+
+             <div class="form-fname">
+                <label for="email">Enter Email</label>
+                <input type="email" name="email" id="email">
+             </div>
+
+             <div class="form-fname">
+                <label for="password">Enter Password </label>
+                <input type="password" name="password" id="password">
+             </div>
+
+             <div class="form-fname">
+                <label for="confirmPassword">confirm Password  </label>
+                <input type="password" name="confirmPassword" id="confirmPassword">
+             </div>
+              
+             <div class="form-fname">
+                <button class="btn" type="submit">SignUp</button>
+             </div>
+               <div class="centerd">OR</div>
+             <div class="form-fname">
+              
+               <a href="/auth/google" class="btn-signup"> SignUp with Google </a>
+            </div>
+            <% if(error) {%>
+               <p> <%= error %> </p>
+            <% }%>
+            </div>
+        </form>
+     </div>
+</body>
+</html>

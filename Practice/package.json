@@ -1,0 +1,33 @@
+{
+  "name": "auth-practice",
+  "version": "1.0.0",
+  "description": "this is common project which is practice during the internship.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "author": "aashish patel",
+  "license": "ISC",
+  "dependencies": {
+    "auth-practice": "file:",
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.3",
+    "connect-flash": "^0.1.1",
+    "connect-mongodb-session": "^5.0.0",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.4.7",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "express-session": "^1.18.1",
+    "flash": "^1.1.0",
+    "googleapis": "^144.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.9.7",
+    "nodemon": "^3.1.9",
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0",
+    "passport-oauth2": "^1.8.0",
+    "path": "^0.12.7"
+  }
+}
