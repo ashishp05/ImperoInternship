@@ -1,0 +1,122 @@
+<%- include("./common/header.ejs") %>
+    <link rel="stylesheet" href="/css/error.css">
+    <link rel="stylesheet" href="/css/details.css">
+    <link rel="stylesheet" href="/css/main.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <%- include("./common/navbar.ejs") %>
+                <p class="heading">Welcome to E-LibRary</p>
+
+                <h2 class="sub-heading">Member Details</h2>
+                <div class="main-details">
+
+                    <% if (error) {%>
+                        <span class="err-input">
+                            <%= error %>
+                        </span>
+                        <% }%>
+
+                            <% if(member.length> 0) { %>
+                                <table class="table-main">
+                                    <thead class="main-row">
+                                        <tr>
+
+                                            <th>MEMBER NAME</th>
+                                            <th>MEMBER EMAIL</th>
+                                            <th>MEMBER TYPE</th>
+                                            <th>MEMBERSHIP STATUS</th>
+
+
+                                        </tr>
+                                    </thead>
+                                    <tbody class="table-body">
+                                        <% member.map( m=>{ %>
+                                            <tr>
+
+                                                <th>
+                                                    <%= m.name %>
+                                                </th>
+                                                <th>
+                                                    <%=m.email %>
+                                                </th>
+                                                <th>
+                                                    <%= m.memberType %>
+                                                </th>
+                                                <th>
+                                                    <%= m.membershipStatus %>
+                                                </th>
+
+                                            </tr>
+
+                                            <% }) %>
+
+                                    </tbody>
+
+                                </table>
+                                <% } else { %>
+                                    <h2 class="sub-heading" ">No Members Are Available...!</h2>
+               
+                <% } %>
+
+     </div>
+
+     <h2 class=" sub-heading">Book Details</h2>
+                                    <div class="main-details">
+
+                                        <% if (error) {%>
+                                            <span class="err-input">
+                                                <%= error %>
+                                            </span>
+                                            <% }%>
+                                                <% if(book.length> 0) { %>
+                                                    <table class="table-main">
+                                                        <thead class="main-row">
+                                                            <tr>
+                                                                <th>TITLE</th>
+                                                                <th>AUTHOR NAME</th>
+                                                                <th>PUBLICATION DATE</th>
+                                                                <th>QUANTITY</th>
+                                                                <th>STATUS</th>
+
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody class="table-body">
+                                                            <% book.map( b=>{ %>
+                                                                <tr>
+                                                                    <th>
+                                                                        <%= b.title %>
+                                                                    </th>
+                                                                    <th>
+                                                                        <%= b.author %>
+                                                                    </th>
+                                                                    <th>
+                                                                        <%=new
+                                                                            Date(b.publicationDate).toISOString().split('T')[0]
+                                                                            %>
+                                                                    </th>
+                                                                    <th>
+                                                                        <%= b.quantity %>
+                                                                    </th>
+                                                                    <th>
+                                                                        <%= b.status %>
+                                                                    </th>
+
+                                                                </tr>
+
+                                                                <% }) %>
+
+                                                        </tbody>
+
+                                                    </table>
+                                                    <% } else { %>
+                                                        <h2 class="sub-heading" ">No Books Are Available...!</h2>
+           
+            <% } %>
+         
+     </div>
+
+    </div>
+</body>
+</html>

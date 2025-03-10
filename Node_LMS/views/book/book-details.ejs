@@ -1,0 +1,92 @@
+<%- include("../common/header.ejs") %>
+    <link rel="stylesheet" href="/css/book.css">
+    <link rel="stylesheet" href="/css/details.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <%- include("../common/navbar.ejs") %>
+                <div class="add-btn">
+                    <h2 class="sub-heading">Book Details</h2>
+                    <a href="/book/add-book">Add New Book</a>
+                </div>
+                <div class="main-details">
+
+                    <div class="err-message">
+                        <% if (error) {%>
+                            <span class="err-input">
+                                <%= error %>
+                            </span>
+                            <% }%>
+                    </div>
+                    <% if(book.length> 0) { %>
+                        <table class="table-main">
+                            <thead class="main-row">
+                                <tr>
+                                    <th>TITLE</th>
+                                    <th>AUTHOR</th>
+                                    <th>PUB.DATE</th>
+                                    <th>QUANTITY</th>
+                                    <th>Available</th>
+                                    <th>Borrowed</th>
+                                    <th>Maintanance</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+
+                                </tr>
+                            </thead>
+                            <tbody class="table-body">
+                                <% book.map( b=>{ %>
+                                    <tr>
+                                        <th>
+                                            <%= b.title %>
+                                        </th>
+                                        <th>
+                                            <%= b.author %>
+                                        </th>
+                                        <th>
+                                            <%=new Date(b.publicationDate).toISOString().split('T')[0] %>
+                                        </th>
+                                        <th>
+                                            <%= b.quantity %>
+                                        </th>
+                                        <th>
+                                            <%= b.availableQuantity %>
+                                        </th>
+                                        <th>
+                                            <%= b.borrowedQuantity %>
+                                        </th>
+                                        <th>
+                                            <%= b.maintenanceQuantity %>
+                                        </th>
+                                        <th>
+                                            <%= b.status %>
+                                        </th>
+                                        <th>
+                                            <div class="actions">
+                                                <a href="/book/edit-book/<%= b._id %>?edit=true"
+                                                    class="edit-btn">Edit</a>
+
+                                                <a href="/book/delete-book/<%= b._id %>" class="delete-btn">Delete</a>
+
+                                            </div>
+                                        </th>
+                                    </tr>
+
+                                    <% }) %>
+
+                            </tbody>
+
+                        </table>
+                        <% } else { %>
+                            <h2 class="sub-heading" ">No Books Are Available...!</h2>
+               
+                <% } %>
+             
+         </div>
+
+        
+    </div>
+    
+</body>
+</html>

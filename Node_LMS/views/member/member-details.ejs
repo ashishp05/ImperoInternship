@@ -1,0 +1,84 @@
+<%- include("../common/header.ejs") %>
+    <link rel="stylesheet" href="/css/book.css">
+    <link rel="stylesheet" href="/css/details.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <%- include("../common/navbar.ejs") %>
+                <div class="add-btn">
+                    <h2 class="sub-heading">Member Details</h2>
+                    <a href="/member/add-member">Add New Member</a>
+
+
+                </div>
+                <div class="main-details">
+
+                    <div class="err-message">
+                        <% if (error) {%>
+                            <span class="err-input">
+                                <%= error %>
+                            </span>
+                            <% }%>
+                    </div>
+                    <% if(member.length> 0) { %>
+                        <table class="table-main">
+                            <thead class="main-row">
+                                <tr>
+
+                                    <th>MEMBER NAME</th>
+                                    <th>MEMBER EMAIL</th>
+                                    <th>MEMBER TYPE</th>
+                                    <th>MEMBERSHIP STATUS</th>
+                                    <th>ACTION</th>
+
+                                </tr>
+                            </thead>
+                            <tbody class="table-body">
+                                <% member.map( m=>{ %>
+                                    <tr>
+
+                                        <th>
+                                            <%= m.name %>
+                                        </th>
+                                        <th>
+                                            <%=m.email %>
+                                        </th>
+                                        <th>
+                                            <%= m.memberType %>
+                                        </th>
+                                        <th>
+                                            <%= m.membershipStatus %>
+                                        </th>
+                                        <th>
+                                            <div class="actions">
+                                                <a href="/member/edit-member/<%= m._id %>?edit=true"
+                                                    class="edit-btn">Edit</a>
+
+                                                <a href="/member/delete-member/<%= m._id %>"
+                                                    class="delete-btn">Delete</a>
+
+
+
+
+                                            </div>
+                                        </th>
+                                    </tr>
+
+                                    <% }) %>
+
+                            </tbody>
+
+                        </table>
+                        <% } else { %>
+                            <h2 class="sub-heading" ">No Members Are Available...!</h2>
+                   
+                    <% } %>
+
+         </div>
+
+        
+    </div>
+    
+</body>
+</html>

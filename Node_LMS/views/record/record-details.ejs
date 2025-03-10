@@ -1,0 +1,103 @@
+<%- include("../common/header.ejs") %>
+    <link rel="stylesheet" href="/css/book.css">
+    <link rel="stylesheet" href="/css/record-details.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <%- include("../common/navbar.ejs") %>
+                <div class="add-btn">
+                    <h2 class="sub-heading">Record Details</h2>
+                    <a href="/record/add-record">Add New Record</a>
+                </div>
+                <div class="book-details">
+                    <div class="err-message">
+                        <% if (error) {%>
+                            <span class="err-input">
+                                <%= error %>
+                            </span>
+                            <% }%>
+                    </div>
+                    <% if(record.length> 0 ) { %>
+                        <table class="table-main">
+                            <thead class="main-row">
+                                <tr>
+
+                                    <th>MEMBER NAME</th>
+                                    <th>MEMBER EMAIL</th>
+                                    <th>BOOKS</th>
+                                    <th>ISSUE-DATE</th>
+                                    <th>DUE-DATE</th>
+                                    <th> BOOK STATUS</th>
+                                    <th>ACTION</th>
+
+                                </tr>
+                            </thead>
+                            <tbody class="table-body">
+                                <% record.forEach( r=>{ %>
+                                    <tr>
+
+
+                                        <th rowspan="<%= r.book.length %>">
+                                            <%= r.memberId.name %>
+                                        </th>
+                                        <th rowspan="<%= r.book.length %>">
+                                            <%=r.memberId.email %>
+                                        </th>
+                                        <% r.book.map( b=>{ %>
+                                            <% if(r.book.length !=r.book.length ) {%>
+                                    <tr>
+                                        <% } %>
+
+                                            <th>
+                                                <%= b.bookId.title %>
+                                            </th>
+                                            <th>
+                                                <%= new Date(b.issueDate).toISOString().split('T')[0] %>
+                                            </th>
+                                            <th>
+                                                <%= new Date(b.dueDate).toISOString().split('T')[0] %> %>
+                                            </th>
+                                            <th>
+                                                <%= b.status %>
+                                            </th>
+
+
+
+                                            <th>
+
+                                                <div class="actions">
+                                                    <a href="/record/edit-record/<%= r._id %>/<%= b.bookId._id %>?edit=true"
+                                                        class="edit-btn">
+                                                        Edit</a>
+
+                                                    <a href="/record/delete-record/<%= r._id %>/<%= b.bookId._id %>"
+                                                        class="delete-btn">
+                                                        Delete</a>
+                                                </div>
+                                            </th>
+
+                                            <% if(r.book.length !=0) {%>
+                                    </tr>
+                                    <% } %>
+                                        <% }) %>
+
+                                            </tr>
+
+                                            <% }) %>
+
+                            </tbody>
+
+                        </table>
+                        <% } else { %>
+                            <h2 class="sub-heading" ">No Records Are Available...!</h2>
+                   
+                    <% } %>
+
+         </div>
+        
+        
+    </div>
+    
+</body>
+</html>
