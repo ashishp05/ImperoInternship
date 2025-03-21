@@ -1,0 +1,52 @@
+<form id="filterForm" action="/book/filter-book" method="Post">
+  <p>Filter By :</p>
+  <div id="filter-input">
+    
+      <input type="text" id="filterTitle" name="filterTitle" placeholder="title" maxlength="25"
+          value="<%= oldInput && oldInput.filterTitle ? oldInput.filterTitle : '' %>"
+          class="<%= oldInput && oldInput.filterTitle ? 'input-filtered' : '' %>">
+
+      
+      <input type="text" id="filterAuthor" name="filterAuthor" placeholder="author" maxlength="25"
+          value="<%= oldInput && oldInput.filterAuthor ? oldInput.filterAuthor : '' %>"
+          class="<%= oldInput && oldInput.filterAuthor ? 'input-filtered' : '' %>">
+
+     
+      <input type="text" id="filterPublicationDate" name="filterPublicationDate" placeholder="pubDate:yyyy-mm-dd" maxlength="10"
+          value="<%= oldInput && oldInput.filterPublicationDate ? oldInput.filterPublicationDate : '' %>"
+          class="<%= oldInput && oldInput.filterPublicationDate ? 'input-filtered' : '' %>">
+
+    
+      <input type="number" id="filterQuantity" name="filterQuantity" placeholder="totalQuantity" min="0" max="100"
+          value="<%= oldInput && oldInput.filterQuantity ? oldInput.filterQuantity : '' %>"
+          class="<%= oldInput && oldInput.filterQuantity ? 'input-filtered' : '' %>">
+
+    
+      <input type="number" id="filterAvailableQuantity" name="filterAvailableQuantity" placeholder="availableQuantity" max="100"
+          value="<%= oldInput && oldInput.filterAvailableQuantity ? oldInput.filterAvailableQuantity : '' %>"
+          class="<%= oldInput && oldInput.filterAvailableQuantity ? 'input-filtered' : '' %>">
+
+     
+      <input type="number" id="filterBorrowedQuantity" name="filterBorrowedQuantity" placeholder="borrowedQuantity"  max="100"
+          value="<%= oldInput && oldInput.filterBorrowedQuantity ? oldInput.filterBorrowedQuantity : '' %>"
+          class="<%= oldInput && oldInput.filterBorrowedQuantity ? 'input-filtered' : '' %>">
+
+     
+      <input type="number" id="filterMaintenanceQuantity" name="filterMaintenanceQuantity" placeholder="maintenanceQuantity" max="100"
+          value="<%= oldInput && oldInput.filterMaintenanceQuantity ? oldInput.filterMaintenanceQuantity : '' %>"
+          class="<%= oldInput && oldInput.filterMaintenanceQuantity ? 'input-filtered' : '' %>">
+
+    
+      <select name="filterStatus" id="filterStatus" class="<%= oldInput && oldInput.filterStatus ? 'input-filtered' : '' %>">
+          <option value="">Status</option>
+          <option value="available" <%= oldInput && oldInput.filterStatus === 'available' ? 'selected' : '' %>>Available</option>
+          <option value="borrowed" <%= oldInput && oldInput.filterStatus === 'borrowed' ? 'selected' : '' %>>Borrowed</option>
+          <option value="maintenance" <%= oldInput && oldInput.filterStatus === 'maintenance' ? 'selected' : '' %>>Maintenance</option>
+      </select>
+
+      <button type="submit">Submit</button>
+      <button type="reset" id="resetBookFilter">Reset</button>
+  </div>
+</form>
+
+

@@ -1,0 +1,322 @@
+#showFilterBtn {
+  background-color: #393E46;
+  color: #eeeeee;
+  border: none;
+  padding: 10px 10px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 7px;
+  transition: 0.3s;
+  margin: 25px 50px 25px 25px;
+}
+
+#showFilterBtn:hover {
+  background-color: #212121;
+}
+
+#filterForm {
+  width: 95%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#filter-input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+#filterForm input,
+#filterForm select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #0092ca;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #212121;
+  gap: 5px;
+}
+
+#filterForm button {
+  background-color: #222831;
+  color: #eeeeee;
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 5px;
+  transition: 0.3s;
+  width: 49%;
+}
+
+#filterForm button:hover {
+  background-color: #212121;
+  color: #fff;
+}
+
+#filter-pubdate-modal,
+#filter-quantity-modal,
+#filter-available-modal,
+#filter-borrowed-modal,
+#filter-maintenance-modal,
+#filter-status-modal,
+#filter-due-modal,
+#filter-issue-modal {
+  width: 300px;
+  display: none;
+  position: absolute;
+  background: #fff;
+  padding: 15px;
+  margin-top: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#filter-pubdate-modal.show,
+#filter-quantity-modal.show,
+#filter-available-modal.show,
+#filter-borrowed-modal.show,
+#filter-maintenance-modal.show,
+#filter-status-modal.show,
+#filter-due-modal.show,
+#filter-issue-modal.show {
+  display: block;
+}
+
+#filter-pubdate-modal { left: 350px; top: 235px; }
+#filter-quantity-modal { left: 520px; top: 235px; }
+#filter-available-modal { left: 630px; top: 235px; }
+#filter-borrowed-modal { left: 750px; top: 235px; }
+#filter-maintenance-modal { left: 930px; top: 235px; }
+#filter-status-modal { left: 1100px; top: 235px; }
+#filter-due-modal { left: 800px; top: 365px; }
+#filter-issue-modal { left: 620px; top: 365px; }
+
+.filterInput {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #0092ca;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #212121;
+  gap: 5px;
+}
+
+.input-filtered {
+  background-color: #0092ca;
+}
+
+.filter-btn {
+  font-size: 20px;
+  background-color: transparent;
+  text-decoration: none;
+  color: #fff;
+  margin: 5px;
+}
+
+.header-cell {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+h3 {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#status-filter {
+  padding: 8px 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+#status-filter:hover {
+  border-color: #2563eb;
+}
+
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#filter-modal {
+  display: none;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  min-width: 280px;
+  position: absolute;
+  top: 40px;
+  left: 0;
+  z-index: 1000;
+}
+
+.modal-content {
+  margin-bottom: 16px;
+}
+
+.modal-content h3 {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.modal-content input[type="text"] {
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  transition: border-color 0.3s ease;
+}
+
+.modal-content input[type="text"]:hover {
+  border-color: #2563eb;
+}
+
+.modal-content input[type="text"]:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.clear-btn,
+.apply-btn {
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.clear-btn {
+  background-color: #f3f4f6;
+  color: #4b5563;
+}
+
+.clear-btn:hover {
+  background-color: #e5e7eb;
+}
+
+.apply-btn {
+  background-color: #2563eb;
+  color: white;
+}
+
+.apply-btn:hover {
+  background-color: #1d4ed8;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+@media (max-width: 768px) {
+  #filterForm {
+      width: 95%;
+      display: flex;
+      flex-direction: column;
+  }
+
+  #filterForm button {
+      width: 100%;
+  }
+
+  #filter-pubdate-modal,
+  #filter-quantity-modal,
+  #filter-available-modal,
+  #filter-borrowed-modal,
+  #filter-maintenance-modal,
+  #filter-status-modal,
+  #filter-due-modal,
+  #filter-issue-modal {
+      width: 90%;
+      left: 5%;
+  }
+
+  #showFilterBtn {
+      width: 100%;
+      padding: 12px;
+  }
+
+  .header-cell {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  #showFilterBtn {
+      width: 100%;
+      padding: 12px;
+      font-size: 14px;
+  }
+
+  #filterForm {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+  }
+
+  #filter-pubdate-modal,
+  #filter-quantity-modal,
+  #filter-available-modal,
+  #filter-borrowed-modal,
+  #filter-maintenance-modal,
+  #filter-status-modal,
+  #filter-due-modal,
+  #filter-issue-modal {
+      width: 100%;
+      left: 0;
+      top: 10%;
+  }
+
+  .modal-content {
+      width: 100%;
+  }
+}
+
+
+#asc-btn
+{
+  width: 30px;
+  height: 20px;
+}

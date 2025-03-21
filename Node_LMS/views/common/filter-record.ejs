@@ -1,0 +1,38 @@
+<form id="filterForm" action="/record/filter-record" method="Post">
+    <p>Filter By :</p>
+  <div id="filter-input">
+     
+  <input type="text" name="name" id="memberName" placeholder="member name" maxlength="25"
+  value="<%= oldInput && oldInput.name ? oldInput.name : '' %>"
+  class="<%= oldInput && oldInput.name ? 'input-filtered' : '' %>">
+
+
+  <input type="text" name="email" id="memberEmail" placeholder="member email" maxlength="50"
+  value="<%= oldInput && oldInput.email ? oldInput.email : '' %>"
+  class="<%= oldInput && oldInput.email ? 'input-filtered' : '' %>">
+
+  
+  <input type="text" name="book" id="recordBook" placeholder="book name" maxlength="25"
+  value="<%= oldInput && oldInput.book ? oldInput.book : '' %>"
+  class="<%= oldInput && oldInput.book ? 'input-filtered' : '' %>">
+
+  <input type="text" name="issueDate" id="issueDate" placeholder="book issueDate" maxlength="14"
+  value="<%= oldInput && oldInput.issueDate ? oldInput.issueDate : '' %>"
+  class="<%= oldInput && oldInput.issueDate ? 'input-filtered' : '' %>">
+
+
+  <input type="text" name="dueDate" id="dueDate" placeholder="book dueDate" maxlength="14"
+  value="<%= oldInput && oldInput.dueDate ? oldInput.dueDate : '' %>"
+  class="<%= oldInput && oldInput.dueDate ? 'input-filtered' : '' %>">
+  <select name="status" id="status"  class="<%= oldInput && oldInput.status ? 'input-filtered' : '' %>">
+    <option value="">Book Status</option>
+    <option value="borrowed" <%=oldInput && oldInput.status==='borrowed' ? 'selected' : '' %>>Borrowed</option>
+    <option value="returned" <%=oldInput && oldInput.status==='returned' ? 'selected' : '' %>>Returned</option>
+    <option value="delayed" <%=oldInput && oldInput.status==='delayed' ? 'selected' : '' %>>Delayed</option>
+  </select>
+
+ 
+  <button type="submit">Submit</button>
+  <button type="reset" id="resetRecordFilter">Reset</button>
+  </div>
+</form>

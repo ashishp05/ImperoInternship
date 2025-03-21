@@ -1,0 +1,57 @@
+.container {
+    background-color: #fff;
+     position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  
+    text-align: center;
+}
+.error-message {
+   
+    font-size: 45px;
+    font-weight: bold;
+   
+}
+
+
+.error-code {
+    font-size: 100px;
+    font-weight: bold;
+    display: flex;
+    color: red;
+    margin: 100px 0 0 100px;
+    
+}
+
+
+.error-description {
+    font-size: 16px;
+    margin-top: 10px;
+    color: #777;
+}
+
+
+.error-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 6px 15px;
+    background-color: #0092ca;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.error-btn:hover {
+    background-color: #0056b3;
+}
+
+
+
+.message-login{
+    color: rgb(253, 77, 77);
+    font-size: 45px;
+    padding: 20px 20px;
+    font-weight : bold;
+    margin: 30px;
+}

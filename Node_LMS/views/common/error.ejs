@@ -1,0 +1,23 @@
+<div class="err-message">
+    <% if (error) { %>
+        <script>
+            Toastify({
+                text: "<%= error %>",  // Ensure the error message is a string
+                duration: 4000,
+                offset : {
+                    y : 50
+                },
+                position: "center",
+                style: {
+                    background: "linear-gradient(to right, #FF0000, #FF0055)",
+                    
+                },
+                close : true ,
+                stopOnFocus : true ,
+                
+            }).showToast();
+        </script>
+        <% } %>
+
+        
+</div>

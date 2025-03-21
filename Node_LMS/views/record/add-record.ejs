@@ -1,0 +1,87 @@
+<%- include("../common/header.ejs") %>
+    <link rel="stylesheet" href="/css/book.css">
+    </head>
+
+    <body>
+        <div class="container">
+
+            <%- include("../common/navbar.ejs") %>
+            <%- include("../common/error.ejs") %>
+
+                <form action="/record/<%if(edit){%>edit-record<%}else{%>add-record<%}%>" method="post" onsubmit="disableButton()"
+                    class="form-control" id="form">
+                   
+                    <div class="form-item">
+                        <label for="memberId" class="form-label">Select a Member:<sup class="sup-text">*</sup></label>
+                        <select name="memberId" id="memberId" class="form-input" required>
+                            <option value="">select a Member</option>
+                            <%member.map(m=>{ %>
+                                <option value="<%= m._id %>" <%=oldInput.memberId==m._id.toString() ? 'selected' : '' %>
+                                    ><%= m.uId %> : <%= m.name%>
+                                </option>
+                                <% }) %>
+                        </select>
+                    </div>
+
+                    <div class="form-item">
+                        <label for="bookId" class="form-label">Select a Book:<sup class="sup-text">*</sup></label>
+                        <select name="bookId" id="bookId" class="form-input" required>
+
+                            <option value="">select a Book</option>
+                            <%book.map(b=>{ %>
+
+                                <option value="<%= b._id %>" <%=oldInput.bookId==b._id.toString() ? 'selected' : '' %> >
+                                    <%= b.title%>
+                                </option>
+                                <% }) %>
+                        </select>
+                    </div>
+                    <div class="form-item">
+                        <label for="issueDate" class="form-label">Enter issue date:<sup class="sup-text">*</sup></label>
+                        <input type="date" name="issueDate" id="issueDate" class="form-input" required max="<%= new Date().toISOString().split('T')[0] %>"
+                            value="<%=  oldInput.issueDate ? new Date(oldInput.issueDate).toISOString().split('T')[0]  :'' %>">
+                    </div>
+
+                    <div class="form-item">
+                        <label for="dueDate" class="form-label">Enter due date:<sup class="sup-text">*</sup></label>
+                        <input type="date" name="dueDate" id="dueDate" class="form-input" required min="<%= new Date().toISOString().split('T')[0] %>" 
+                        
+                            value="<%= oldInput.dueDate ? new Date(oldInput.dueDate).toISOString().split('T')[0] : '' %>"
+
+                            <%= (oldInput.status == 'delayed' ) ? ` readonly ` : '' %> >
+                    </div>
+                    
+
+                    <div class="form-item">
+                        <label for="status" class="form-label">Current book status:<sup class="sup-text">*</sup></label>
+                        <select name="status" id="status" class="form-input">
+                            <option value="">select status</option>
+                            <% if (!edit) {%>
+                                <option value="borrowed" <%=oldInput.status==='borrowed' ? 'selected' : "" %> >Borrowed
+                                </option>
+                                <% } else { %>
+                                    <option value="borrowed" <%=oldInput.status==='borrowed' ? 'selected' : "" %>
+                                        >Borrowed</option>
+                                    <option value="delayed" <%=oldInput.status==='delayed' ? 'selected' : "" %>>Delayed
+                                    </option>
+                                    <option value="returned" <%=oldInput.status==='returned' ? 'selected' : "" %>
+                                        >Returned</option>
+                                    <% }%>
+
+                        </select>
+                    </div>
+
+                    <div class="btn-submit">
+                        <% if(edit){ %>
+                            <input type="hidden" name="id" value="<%=record._id %>">
+                            <input type="hidden" name="bookid" value="<%=currBook._id %>">
+
+                            <% } %>
+                                <button type="submit" id="submitButton" >
+                                    <% if(edit) { %> Edit Record <% } else {%> Add Record <% } %>
+                                </button>
+                    </div>
+                </form>
+        </div>
+
+        <%-include("../common/footer.ejs") %>

@@ -1,0 +1,236 @@
+<%- include("../common/header.ejs") %>
+    <link rel="stylesheet" href="/css/book.css">
+    <link rel="stylesheet" href="/css/details.css">
+    <link rel="stylesheet" href="/css/filter.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <%- include("../common/navbar.ejs") %>
+                <%-include("../common/error.ejs") %>
+                    <div class="add-btn">
+                        <h2 class="sub-heading">Book Details</h2>
+                        <a href="/book/add-book">Add New Book</a>
+                    </div>
+                    <div>
+                        <%-include("../common/filter-book.ejs") %>
+                    </div>
+                    <div class="main-details">
+                      
+                            <table class="table-main">
+                                <thead class="main-row">
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Author</th>
+                                        <th>
+                                            <div class="header-cell">
+                                                <span>PubDate</span>
+                                                <button id="filter-pubdate" class="filter-btn ">
+
+
+
+                                                    <i class="fa-solid fa-filter"></i>
+                                                </button>
+                                                <form action="/book/filter-bookbypubdate" method="post"
+                                                    id="filter-pubdate-modal" class="modal">
+
+                                                    <div class="modal-content" style="color: black;">
+                                                        <span>Start :
+
+                                                            <input type="date" name="startDate" id="startDate"
+                                                                placeholder="Enter publicationDate..."
+                                                                value="<%= oldInput && oldInput.startDate ? oldInput.startDate : '' %>"
+                                                                class="<%= oldInput && oldInput.startDate ? 'input-filtered' : '' %> filterInput">
+
+
+                                                        </span>
+                                                        <br>
+                                                        <span>End :
+                                                            <input type="date" name="endDate" id="endDate"
+                                                                placeholder="Enter publicationDate..."
+                                                                value="<%= oldInput && oldInput.endDate ? oldInput.endDate : '' %>"
+                                                                class="<%= oldInput && oldInput.endDate ? 'input-filtered' : '' %> filterInput">
+                                                        </span>
+
+                                                    </div>
+                                                    <div class="modal-actions">
+                                                        <button type="submit" class="apply-btn">Apply Filter</button>
+                                                        <button type="reset" class="clear-btn">Clear</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </th>
+
+                                        <th>
+                                            <div class="header-cell">
+                                                <span>Quantity</span>
+                                                <button id="filter-quantity" class="filter-btn ">
+
+
+
+                                                    <i class="fa-solid fa-filter"></i>
+                                                </button>
+                                                <form action="/book/filter-bookbyquantity" method="post"
+                                                    id="filter-quantity-modal" class="modal">
+
+                                                    <div class="modal-content">
+
+                                                        <input type="number" name="totalQuantity" id="totalQuantity"
+                                                            placeholder="Enter quantity..."
+                                                            value="<%= oldInput && oldInput.totalQuantity ? oldInput.totalQuantity : '' %>"
+                                                            class="<%= oldInput && oldInput.totalQuantity ? 'input-filtered' : '' %> filterInput">
+                                                    </div>
+                                                    <div class="modal-actions">
+                                                        <button type="submit" name="filter" value="up"
+                                                            class="apply-btn">Up</button>
+                                                        <button type="reset" class="clear-btn"> Reset</button>
+                                                        <button type="submit" name="filter" value="down"
+                                                            class="apply-btn">Down</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </th>
+                                        <th>
+                                            <div class="header-cell">
+                                                <span>Available </span>
+                                                <button id="filter-available" class="filter-btn">
+                                                    <i class="fa-solid fa-filter"></i>
+                                                </button>
+                                                <form action="/book/filter-bookbyavailable" method="post"
+                                                    id="filter-available-modal" class="modal">
+
+                                                    <div class="modal-content">
+
+                                                        <input type="number" name="available" id="available"
+                                                            placeholder="Enter available quantity..."
+                                                            value="<%= oldInput && oldInput.available ? oldInput.available : '' %>"
+                                                            class="<%= oldInput && oldInput.available ? 'input-filtered' : '' %> filterInput">
+                                                    </div>
+                                                    <div class="modal-actions">
+                                                        <button type="submit" name="filter" value="up"
+                                                            class="apply-btn">Up</button>
+                                                        <button type="reset" class="clear-btn"> Reset</button>
+                                                        <button type="submit" name="filter" value="down"
+                                                            class="apply-btn">Down</button>
+                                                    </div>
+                                                </form>
+
+                                        </th>
+
+                                        <th>
+                                            <div class="header-cell">
+                                                <span>Borrowed </span>
+                                                <button id="filter-borrowed" class="filter-btn">
+                                                    <i class="fa-solid fa-filter"></i>
+                                                </button>
+                                                <form action="/book/filter-bookbyborrowed" method="post"
+                                                    id="filter-borrowed-modal" class="modal">
+
+                                                    <div class="modal-content">
+
+                                                        <input type="number" name="borrowed" id="borrowed"
+                                                            placeholder="Enter borrowed quantity..."
+                                                            value="<%= oldInput && oldInput.borrowed ? oldInput.borrowed : '' %>"
+                                                            class="<%= oldInput && oldInput.borrowed ? 'input-filtered' : '' %> filterInput">
+                                                    </div>
+                                                    <div class="modal-actions">
+                                                        <button type="submit" name="filter" value="up"
+                                                            class="apply-btn">Up</button>
+                                                        <button type="reset" class="clear-btn"> Reset</button>
+                                                        <button type="submit" name="filter" value="down"
+                                                            class="apply-btn">Down</button>
+                                                    </div>
+                                                </form>
+
+                                        </th>
+
+                                        <th>
+                                            <div class="header-cell">
+                                                <span>Maintenance </span>
+                                                <button id="filter-maintenance" class="filter-btn">
+                                                    <i class="fa-solid fa-filter"></i>
+                                                </button>
+                                                <form action="/book/filter-bookbymaintenance" method="post"
+                                                    id="filter-maintenance-modal" class="modal">
+
+                                                    <div class="modal-content">
+
+                                                        <input type="number" name="maintenance" id="maintenance"
+                                                            placeholder="Enter maintenance quantity..."
+                                                            value="<%= oldInput && oldInput.maintenance ? oldInput.maintenance : '' %>"
+                                                            class="<%= oldInput && oldInput.maintenance ? 'input-filtered' : '' %> filterInput">
+                                                    </div>
+                                                    <div class="modal-actions">
+                                                        <button type="submit" name="filter" value="up"
+                                                            class="apply-btn">Up</button>
+                                                        <button type="reset" class="clear-btn"> Reset</button>
+                                                        <button type="submit" name="filter" value="down"
+                                                            class="apply-btn">Down</button>
+                                                    </div>
+                                                </form>
+
+                                        </th>
+
+                                        <th class="table-header">
+                                            Status
+                                        </th>
+
+                                        <th>Action</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody class="table-body">
+                                    <% book.map( b=>{ %>
+                                        <tr>
+                                            <th>
+                                                <%= b.title %>
+                                            </th>
+                                            <th>
+                                                <%= b.author %>
+                                            </th>
+                                            <th>
+                                                <%=new Date(b.publicationDate).toISOString().split('T')[0] %>
+                                            </th>
+                                            <th>
+                                                <%= b.quantity %>
+                                            </th>
+                                            <th>
+                                                <%= b.availableQuantity %>
+                                            </th>
+                                            <th>
+                                                <%= b.borrowedQuantity %>
+                                            </th>
+                                            <th>
+                                                <%= b.maintenanceQuantity %>
+                                            </th>
+                                            <th>
+                                                <%= b.status %>
+                                            </th>
+                                            <th>
+                                                <div class="actions">
+                                                    <a href="/book/edit-book/<%= b._id %>?edit=true"
+                                                        class="edit-btn">Edit</a>
+
+                                                    <a href="/book/delete-book/<%= b._id %>"
+                                                        class="delete-btn">Delete</a>
+
+                                                </div>
+                                            </th>
+                                        </tr>
+
+                                        <% }) %>
+
+                                </tbody>
+
+                            </table>
+
+             
+         </div>
+
+        
+    </div>
+   <script src="/js/disableButton.js"></script>
+<script src="/js/reset-book-filter.js"></script>
+    </body>
+
+    </html>

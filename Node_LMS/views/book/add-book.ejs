@@ -1,0 +1,71 @@
+<%- include("../common/header.ejs") %>
+    <link rel="stylesheet" href="/css/book.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <%- include("../common/navbar.ejs") %>
+            <%-include("../common/error.ejs") %>   
+                <form action="/book/<%if(edit){%>edit-book<%}else{%>add-book<%}%>" method="post" class="form-control"
+                    id="form" onsubmit="disableButton()">
+                   
+
+                    <div class="form-item">
+                        <label for="title" class="form-label"> Enter Book Title:<sup class="sup-text">*</sup></label>
+                        <input type="text" name="title" id="title" class="form-input " value="<%= oldInput.title%>"
+                            required maxlength="25" minlength="3" placeholder="Enter a title">
+                    </div>
+
+                    <div class="form-item">
+                        <label for="author" class="form-label"> Enter Book Author Name:<sup
+                                class="sup-text">*</sup></label>
+                        <input type="text" name="author" id="author" class="form-input" value="<%= oldInput.author%>"
+                            required maxlength="25" minlength="3" placeholder="Enter an author">
+                    </div>
+
+                    <div class="form-item">
+                        <label for="quantity" class="form-label"> Enter Book Quantity:<sup
+                                class="sup-text">*</sup></label>
+                        <input type="number" name="quantity" id="quantity" class="form-input" required max="100" min="0"
+                            value="<%= oldInput.quantity%>" placeholder="Enter book quantity" >
+                    </div>
+
+                    <div class="form-item">
+                        <label for="publicationDate" class="form-label"> Enter Book Publication Date:<sup
+                                class="sup-text">*</sup></label>
+                        <input type="date" name="publicationDate" id="publicationDate" class="form-input" required
+                            max="<%= new Date().toISOString().split('T')[0] %>"
+                            value="<%=  oldInput.publicationDate ? new Date(oldInput.publicationDate).toISOString().split('T')[0]  :'' %>">
+                    </div>
+                    <div class="form-item">
+                        <label for="status" class="form-label"> Enter Book Status:<sup class="sup-text">*</sup></label>
+                        <select class="form-input-text" name="status" required>
+                            <option value="">select a book</option>
+                            <% if(!edit) { %>
+                                <option value="available" <%=oldInput.status==='available' ? 'selected' : "" %>
+                                    >Available</option>
+
+                                <% } else { %>
+                                    <option value="available" <%=oldInput.status==='available' ? 'selected' : "" %>
+                                        >Available</option>
+                                    <option value="maintenance" <%=oldInput.status==='maintenance' ? 'selected' : "" %>
+                                        >Maintenance</option>
+
+                                    <% } %>
+
+                        </select>
+                    </div>
+
+                    <div class="btn-submit">
+                        <% if(edit){ %>
+                            <input type="hidden" name="id" value="<%=book._id %>">
+                            <% } %>
+                                <button type="submit" id="submitButton" >
+                                    <% if(edit) { %> Edit Book <% } else {%> Add Book <% } %>
+                                </button>
+                    </div>
+
+                </form>
+        </div>
+        <%- include("../common/footer.ejs") %>
+        

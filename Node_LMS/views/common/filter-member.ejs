@@ -1,0 +1,36 @@
+<form id="filterForm" action="/member/filter-member" method="Post">
+  <p>Filter By :</p>
+  <div id="filter-input">
+
+    <input type="text" name="filteruId" id="filteruId" placeholder="uId" maxlength="10"
+      value="<%= oldInput && oldInput.filteruId ? oldInput.filteruId : '' %>"
+      class="<%= oldInput && oldInput.filteruId ? 'input-filtered' : '' %>">
+
+
+    <input type="text" name="filterName" id="filterName" placeholder="name" maxlength="25"
+      value="<%= oldInput && oldInput.filterName ? oldInput.filterName : '' %>"
+      class="<%= oldInput && oldInput.filterName ? 'input-filtered' : '' %>">
+
+
+    <input type="text" name="filterEmail" id="filterEmail" placeholder="email" maxlength="50"
+      value="<%= oldInput && oldInput.filterEmail ? oldInput.filterEmail : '' %>"
+      class="<%= oldInput && oldInput.filterEmail ? 'input-filtered' : '' %>">
+    <select name="filterMemberType" id="filterMemberType" class="<%= oldInput && oldInput.filterMemberType ? 'input-filtered' : '' %>">
+      <option value="" >memberType</option>
+      <option value="student" <%=oldInput && oldInput.filterMemberType==='student' ? 'selected' : '' %>>Student</option>
+      <option value="faculty" <%=oldInput && oldInput.filterMemberType==='faculty' ? 'selected' : '' %>>Faculty</option>
+      <option value="guest" <%=oldInput && oldInput.filterMemberType==='guest' ? 'selected' : '' %>>Guest</option>
+    </select>
+
+    <select name="filterMembershipStatus" id="filterMembershipStatus"
+      class="<%= oldInput && oldInput.filterMembershipStatus ? 'input-filtered' : '' %>">
+      <option value="">membershipStatus</option>
+      <option value="active" <%=oldInput && oldInput.filterMembershipStatus==='active' ? 'selected' : '' %>> Active</option>
+      <option value="inactive" <%=oldInput && oldInput.filterMembershipStatus==='inactive' ? 'selected' : '' %>>Inactive
+      </option>
+    </select>
+
+    <button type="submit">Submit</button>
+    <button type="reset" id="resetMemberFilter">Reset</button>
+  </div>
+</form>

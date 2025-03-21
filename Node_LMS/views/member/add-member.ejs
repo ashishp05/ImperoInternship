@@ -1,0 +1,51 @@
+<%- include("../common/header.ejs") %>
+<link rel="stylesheet" href="/css/book.css">
+</head>
+
+<body>
+    <div class="container">
+        <%- include("../common/navbar.ejs") %>
+        <%-include("../common/error.ejs") %>
+        <button id="showToastButton">Show Toast</button>
+        <form action="/member/<% if (edit) { %>edit-member<% } else { %>add-member<% } %>" method="post" class="form-control" id="form" onsubmit="disableButton()">
+ 
+            <div class="form-item">
+                <label for="name" class="form-label">Enter Name:<sup class="sup-text">*</sup></label>
+                <input type="text" name="name" id="name" class="form-input" value="<%= oldInput.name %>" maxlength="25" minlength="3" required placeholder="Enter Name here">
+            </div>
+
+            <div class="form-item">
+                <label for="email" class="form-label">Enter Email:<sup class="sup-text">*</sup></label>
+                <input type="email" name="email" id="email" class="form-input " value="<%= oldInput.email %>" maxlength="50" required placeholder="Enter email here">
+            </div>
+
+            <div class="form-item">
+                <label for="memberType" class="form-label">Enter Member Type:<sup class="sup-text">*</sup></label>
+                <select class="form-input-text" name="memberType" required>
+                    <option value="">select a MemberType</option>
+                    <option value="student" <%= oldInput.memberType === 'student' ? 'selected' : '' %>>Student</option>
+                    <option value="faculty" <%= oldInput.memberType === 'faculty' ? 'selected' : '' %>>Faculty</option>
+                    <option value="guest" <%= oldInput.memberType === 'guest' ? 'selected' : '' %>>Guest</option>
+                </select>
+            </div>
+
+            <div class="form-item">
+                <label for="membershipStatus" class="form-label">Enter Membership Status:<sup class="sup-text">*</sup></label>
+                <select class="form-input-text" name="membershipStatus" required>
+                    <option value="">select a status</option>
+                    <option value="active" <%= oldInput.membershipStatus === 'active' ? 'selected' : '' %>>Active</option>
+                    <option value="inactive" <%= oldInput.membershipStatus === 'inactive' ? 'selected' : '' %>>Inactive</option>
+                </select>
+            </div>
+
+            <div class="btn-submit">
+                <% if (edit) { %>
+                    <input type="hidden" name="id" value="<%= member._id %>">
+                <% } %>
+                <button type="submit" id="submitButton" >
+                    <% if (edit) { %> Edit Member <% } else { %> Add Member <% } %>
+                </button>
+            </div>
+        </form>
+    </div>
+   <%-include("../common/footer.ejs") %>

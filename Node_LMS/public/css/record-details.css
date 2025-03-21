@@ -1,0 +1,250 @@
+.details
+{  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin:  auto;
+   scroll-behavior: smooth;
+}
+
+.table-main {
+    width: 90%;
+    margin:10px auto;
+    border-collapse: collapse;
+   
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.first-color { 
+	background: #222831; 
+}
+	
+.second-color { 
+	background: #393e46; 
+}
+
+.third-color { 
+	background: #0092ca; 
+}
+
+.fourth-color { 
+	background: #eeeeee; 
+}
+
+.main-row {
+    background-color: #222831;
+    color: white;
+    font-size: 18px;
+   
+    
+}
+ 
+
+table thead  th:first-child  {
+    border-top-left-radius: 15px;
+  }
+   
+  table thead  th:last-child  {
+    border-top-right-radius: 15px;
+  }
+
+ 
+
+.main-row th {
+    padding: 20px;
+ 
+}
+
+
+.table-body th  {
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+    font-size: 16px;
+    color: #393e46;
+    transition: background-color 0.2s ease-in-out;
+}
+ 
+.table-body th{
+    border-bottom: 1px solid black;
+
+}
+    .table-body tr:nth-child(even)
+    {
+        background-color: #fff;
+    }
+    .table-body tr:nth-child(odd)
+    {
+        background-color: #f4f4f4;
+    }
+
+.table-body tr{
+    margin: 50px;
+    padding: 20px;
+}
+
+td {
+    padding: 12px;
+}
+
+
+.add-btn
+{  
+    margin-top: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+
+.sub-heading
+{
+   
+
+     margin: 25px;    
+    color: #222831;
+    font-size: 45px;
+    margin-left: 50px;
+    text-align: center;
+
+}
+.add-btn a
+{   
+    
+    font-size: 20px;
+    text-align: center;
+     margin: 25px;
+     margin-right: 110px;
+     text-decoration: none;
+    padding: 10px;
+    width: 250px;
+    border-radius: 7px;
+    background-color:#393e46 ;
+    color: #eeeeee;
+    transition: all 0.8s ease;
+}
+
+.add-btn a:hover
+{
+    background-color: #000000;
+    color: white;
+}
+.actions
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.edit-btn
+{  margin-left: 20px;
+    font-size: 16px;
+    text-align: center;
+     text-decoration: none;
+    padding: 5px 7px;
+    width: 60px;
+    border-radius: 7px;
+    border: 1px solid black;
+    background-color:#3aab30 ;
+    color: #eeeeee;
+    transition: all 0.3s ease;
+}
+
+.edit-btn:hover
+{
+    background-color: #eeeeee;
+    color: #3aab30;
+}
+
+
+
+.delete-btn
+{
+    font-size: 16px;
+    text-align: center;
+     text-decoration: none;
+     padding: 5px 7px;
+    width: 70px;
+    border-radius: 7px;
+    background-color:#bd1818 ;
+    border: 1px solid black;
+    color: #eeeeee;
+    transition: all 0.3s ease;
+}
+
+.delete-btn:hover
+{
+    background-color: #eeeeee;
+    color: red;
+}
+
+@media (max-width: 600px) {
+    .add-btn
+    {
+     margin-top: 100px;
+    }
+    .sub-heading
+    {
+     font-size: 35px;
+    }
+     .add-btn a
+ {   
+     
+     font-size: 16px;
+     text-align: center;
+      margin: 25px;
+      margin-right: 50px;
+      
+      text-decoration: none;
+     padding: 10px;
+     width: 150px;
+     border-radius: 7px;
+     background-color:#393e46 ;
+     color: #eeeeee;
+     transition: all 0.8s ease;
+ }
+ 
+ .add-btn a:hover
+ {
+     background-color: #000000;
+     color: white;
+ }
+     
+ }
+ 
+ @media (max-width: 468px) {
+     .add-btn
+     {
+      margin-top: 100px;
+     }
+     .sub-heading
+     {
+      font-size: 35px;
+     }
+      .add-btn a
+  {   
+      
+      font-size: 16px;
+      text-align: center;
+       margin: 25px;
+       margin-right: 50px;
+       
+       text-decoration: none;
+      padding: 10px;
+      width: 150px;
+      border-radius: 7px;
+      background-color:#393e46 ;
+      color: #eeeeee;
+      transition: all 0.8s ease;
+  }
+  
+  .add-btn a:hover
+  {
+      background-color: #000000;
+      color: white;
+  }
+      
+  }

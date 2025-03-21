@@ -1,0 +1,128 @@
+<%- include("./common/header.ejs") %>
+    <link rel="stylesheet" href="/css/error.css">
+    <link rel="stylesheet" href="/css/details.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/filter.css">
+     <style>
+          .thin {
+        font-weight: 100;
+        font-size: 1em; /* Adjust size if needed */
+        transform: scaleX(0.5); /* Make it thinner horizontally */
+      }
+     </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <%- include("./common/navbar.ejs") %>
+            <%- include("./common/error.ejs") %>
+                <p class="heading">Welcome to E-LibRary</p>
+
+                <h2 class="sub-heading">Member Details</h2>
+                <div class="main-details">
+
+                            
+                                <table class="table-main">
+                                    <thead class="main-row">
+                                        <tr>
+
+                                            <th><span>STATUS</span> <i class="fa-solid fa-sort"></i>
+                                            </th>
+                                            <th><span>MEMBER NAME</span> <i class="fa-solid fa-sort"></i></th>
+                                            <th>MEMBER EMAIL</th>
+                                            <th>MEMBER TYPE</th>
+                                            <th>MEMBERSHIP STATUS</th>
+
+
+                                        </tr>
+                                    </thead>
+                                    <tbody class="table-body">
+                                        <% member.map( m=>{ %>
+                                            <tr>
+
+                                                <th>
+                                                    <%= m.uId %>
+                                                </th>
+                                                <th>
+                                                    <%= m.name %>
+                                                </th>
+                                                <th>
+                                                    <%=m.email %>
+                                                </th>
+                                                <th>
+                                                    <%= m.memberType %>
+                                                </th>
+                                                <th>
+                                                    <%= m.membershipStatus %>
+                                                </th>
+
+                                            </tr>
+
+                                            <% }) %>
+
+                                    </tbody>
+
+                                </table>
+                             
+     </div>
+
+     <h2 class=" sub-heading">Book Details</h2>
+                                    <div class="main-details">
+
+                                        <% if (error) {%>
+                                            <span class="err-input">
+                                                <%= error %>
+                                            </span>
+                                            <% }%>
+                                                
+                                                    <table class="table-main">
+                                                        <thead class="main-row">
+                                                            <tr>
+                                                                <th><span>TITLE</span> <i class="fa-solid fa-sort"></i></th>
+                                                                <th><span>AUTHOR NAME </span><i class="fa-solid fa-sort"></i></th>
+                                                                <th><span>PUBLICATION DATE</span> <i class="fa-solid fa-sort"></i></th>
+                                                                <th> <span>QUANTITY</span> <i class="fa-solid fa-sort"></i></th>
+                                                                <th><span>STATUS</span> <i class="fa-solid fa-sort"></i></th>
+
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody class="table-body">
+                                                            <% book.map( b=>{ %>
+                                                                <tr>
+                                                                    <th>
+                                                                        <%= b.title %>
+                                                                    </th>
+                                                                    <th>
+                                                                        <%= b.author %>
+                                                                    </th>
+                                                                    <th>
+                                                                        <%=new
+                                                                            Date(b.publicationDate).toISOString().split('T')[0]
+                                                                            %>
+                                                                    </th>
+                                                                    <th>
+                                                                        <%= b.quantity %>
+                                                                    </th>
+                                                                    <th>
+                                                                        <%= b.status %>
+                                                                    </th>
+
+                                                                </tr>
+
+                                                                <% }) %>
+
+                                                        </tbody>
+
+                                                    </table>
+                                                   
+         
+     </div> 
+
+     
+         
+        
+                
+     
+    </div>
+</body>
+</html>

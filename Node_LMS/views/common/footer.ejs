@@ -1,0 +1,18 @@
+<script src="/js/disableButton.js"></script>
+<script>
+    var nums = document.querySelectorAll("input[type='number']");
+
+nums.forEach(num => {
+var max = 3;
+num.addEventListener('input' , () =>
+{
+if(num.value.length >=max)
+{
+  num.value = 100;
+}
+})
+
+});
+</script>
+</body>
+</html>
