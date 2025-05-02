@@ -1,0 +1,13 @@
+GYM RECOMMENDATION & FINDER
+
+**Admin Credentials**
+username: admin1@yopmail.com
+password: admin
+
+**Gym-Owner Credentials**
+username: owner1@yopmail.com
+password: owner
+
+**Gym-Member Credentials**
+username: member1@yopmail.com
+password: member1
