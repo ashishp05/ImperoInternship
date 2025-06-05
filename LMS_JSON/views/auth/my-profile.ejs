@@ -1,0 +1,129 @@
+<%- include("../common/header.ejs") %>
+    <link rel="stylesheet" href="/css/error.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/myProfile.css">
+   
+   
+    </head>
+
+    <body>
+        <div class="container">
+            <%- include("../common/navbar.ejs") %>
+                <%- include("../common/error.ejs") %>
+                    <p class="admin">Welcome, <%= user.name %></p>
+
+                     <div class="profile">
+                        <div class="profile-main">
+                            <div class="profile-hero">
+                                <div class="profile-image">
+                                    <img src="<%= user.profile.image ? user.profile.image : `https://avatar.iran.liara.run/username?username=${user.name}` %>" alt="avt" />
+
+
+                                </div>
+                                <div class="profile-name">
+                                    <h2 class="pname"><%= user.name %> <span class="memberType"> <%= user.memberType %></span> </h2>
+                                    <p class="pemail"><%= user.email %></p>
+                                    
+                                </div>
+                            </div>
+                            
+                            <a href="/auth/edit-profile" class="edit-btn" >Edit</a>
+                            
+                        </div>
+                        <form action="/auth/edit-profile-image" method="post" class="profileForm" id="profileForm" enctype="multipart/form-data" >
+                            <input type="file" name="image" id="profileImage" onchange="editImage()">
+                        </form>
+                        
+                        <script>
+                            function editImage() {
+                               
+                                document.getElementById('profileForm').submit();
+                            }
+                        </script>
+                        
+                        <div class="profile-details">
+                            
+                             <div class="profile-items">
+                                <label for="fullname">Full Name:</label>
+                                <p><%= user.name %></p>
+                             </div>
+                             <div class="profile-items">
+                                <label for="gender">Gender:</label>
+                                <p><%=  user.profile.gender ? user.profile.gender : 'NA'  %></p>
+                             </div>
+                             <div class="profile-items">
+                                <label for="dateOfBirth">BirthDate:</label>
+                                <p><%=  user.profile.dateOfBirth ? new Date(user.profile.dateOfBirth).toISOString().split('T')[0]  :'NA' %></p>
+                             </div>
+                             <div class="profile-items">
+                                <label for="contactNumber">Phone:</label>
+                                <p><%=  user.profile.contactNumber ?  user.profile.contactNumber :'NA' %></p>
+                             </div>
+                             <div class="profile-items">
+                                <label for="collageName">Collage Name:</label>
+                                <p><%= user.profile.collageName ? user.profile.collageName : "NA" %></p>
+                             </div>
+                             <div class="profile-items">
+                                <label for="department">Department:</label>
+                                <p><%= user.profile.department ? user.profile.department : "NA" %></p>
+                             </div>
+                             
+                        </div>
+
+                     </div>
+
+                     <div class="profile-reset">
+                        
+                        
+                        <form action="/auth/my-profile/reset-password" method="post"
+                        class="form-control-reset" id="form" onsubmit="disableButton()">
+                        
+                        <div class="form-item">
+                            <label for="password" class="form-label"> Enter Password: </label>
+                            <input type="password" name="password" id="passwordofFP" class="form-input " 
+                                required maxlength="8"  placeholder="Enter Password Here">
+                        </div>
+
+                        <div class="form-item">
+                            <label for="confirmPassword" class="form-label"> Enter confirmPassword: </label>
+                            <input type="password" name="confirmPassword" id="confirmPasswordofFP" class="form-input " 
+                                required maxlength="8"  placeholder="Enter confirmPassword Here">
+                        </div>
+                        
+                        <div class="btn-submit btn-reset">
+                            
+                            <button type="submit" id="submitButton">
+                               Reset Password
+                            </button>
+                        </div>
+                
+                        
+                    </form>
+                        
+                       
+
+                     </div>
+
+                   
+
+                    
+                 </div>
+
+                   
+
+                
+                  
+
+
+
+
+
+                    <script src="/js/sort.js"></script>
+
+
+                    <script src="/js/reset-member-filter.js"></script>
+        </div>
+    </body>
+
+    </html>

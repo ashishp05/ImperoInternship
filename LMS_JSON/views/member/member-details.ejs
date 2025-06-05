@@ -1,0 +1,120 @@
+<%- include("../common/header.ejs") %>
+    <link rel="stylesheet" href="/css/book.css">
+    <link rel="stylesheet" href="/css/details.css">
+    <link rel="stylesheet" href="/css/filter.css">
+    <link rel="stylesheet" href="/css/toggle.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <%- include("../common/navbar.ejs") %>
+                <%-include("../common/error.ejs") %>
+                    <div class="add-btn">
+                        <h2 class="sub-heading">Member Details</h2>
+                        <%-include("../common/filter-member.ejs") %>
+                        <% if( user.memberType == "admin") {%>
+                        <a href="/member/add-member">Add New Member</a>
+                        <%} %>
+
+
+                    </div>
+                    <div class="memberFilter">
+                    </div>
+                    <div class="main-details">
+
+
+
+                        <table class="table-main">
+                            <thead class="main-row">
+                                <tr>
+                                    <th>MEMBER ID <i id="sortUidIcon" class="fa-solid fa-sort"></i></th>
+                                    <th>MEMBER NAME <i id="sortNameIcon" class="fa-solid fa-sort"></i></th>
+                                    <th>MEMBER EMAIL </th>
+                                    <th>MEMBER TYPE <i id="sortMemberTypeIcon"
+                                        class="fa-solid fa-sort"></i></th>
+                                        <% if( user.memberType == "admin") {%>
+                                        <th>MEMBERSHIP STATUS <i id="sortMembershipStatusIcon"
+                                            class="fa-solid fa-sort"></i> </th>
+                                    <th>ACTION</th>
+                                    <%} %>
+                                </tr>
+                            </thead>
+                            
+                            <% if (member.length > 0) {%>
+                                <tbody class="table-body">
+                                    <% member.map( m=>{ %> 
+                                        <% if( m.memberType != "admin") {%>
+                                            <tr>
+                                                <th>
+                                                    <%= m.uId ? m.uId : "ADMIN" %>
+                                                </th>
+                                                <th>
+                                                    <%= m.name %>
+                                                </th>
+                                                <th>
+                                                    <%=m.email %>
+                                                </th>
+                                                <th>
+                                                    <%= m.memberType %>
+                                                </th>
+                                                <% if( user.memberType == "admin") {%>
+                                                <th> 
+                                                    <label class="switch"> 
+                                                       
+                                                            <input name="statustoggle" type="checkbox"  onchange="toggleUser('<%= m._id %>', this.checked)" <%= m.membershipStatus == 'active' ? 'checked' : '' %> >
+                                                       
+                                                        <span class="slider round"></span>
+                                                    </label>
+                                                   <%-include("../common/toggleButton.ejs")  %>
+                                                </th>
+                                                <th>
+                                                    <div class="actions">
+                                                        <a href="/member/edit-member/<%= m._id %>?edit=true"
+                                                            id="showToastButton" class="edit-btn">Edit</a>
+        
+                                                        <a href="/member/delete-member/<%= m._id %>" id="showToastButton"
+                                                            class="delete-btn">Delete</a>
+        
+        
+        
+        
+                                                    </div>
+                                                </th>
+                                                <%} %>
+                                            </tr>
+                                        <%} %>
+                                       
+    
+                                        <% }) %>
+    
+                                </tbody> 
+    
+                                <%} else { %> 
+                                    <tbody class="table-body">
+                                       
+                                          <th colspan="9">No Member Found</th>
+                                      
+                                    </tbody>
+                                    <%}  %>
+    
+
+                        </table>
+                        <!-- Pagination  -->
+                        
+                                    
+                                        <%- include("../pagination/member-pagination.ejs") , {currentPage : currentPage , lastPage: lastPage ,totalItems : totalItems  } %>
+
+                            
+                             
+
+
+                    </div>
+
+
+        </div>
+        <script src="/js/reset-member-filter.js"></script>
+        <script src="/js/sort-member.js"></script>
+
+    </body>
+
+    </html>

@@ -1,0 +1,82 @@
+<%- include("../common/header.ejs") %>
+    <link rel="stylesheet" href="/css/book.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <%- include("../common/navbar.ejs") %>
+                <%-include("../common/error.ejs") %>
+                    <form action="/auth/edit-profile" method="post"
+                        class="form-control" id="form" onsubmit="disableButton()">
+
+
+                        <div class="form-item">
+                            <label for="fullName" class="form-label"> Enter FullName:<sup
+                                    class="sup-text">*</sup></label>
+                            <input type="text" name="fullName" id="fullName" class="form-input " value="<%= oldInput.fullName%>"
+                                required maxlength="25" minlength="3" placeholder="Enter a FullName">
+                        </div>
+                        <div class="form-item">
+                            <label for="gender" class="form-label"> Enter Gender:<sup
+                                    class="sup-text">*</sup></label>
+                            <select class="form-input-text" name="gender" required>
+                                <option value="">select a Gender</option>
+                               
+                                        <option value="male" <%=oldInput.gender==='male' ? 'selected' : "" %>
+                                            >Male</option>
+                                            <option value="female" <%=oldInput.gender==='female' ? 'selected' : "" %>
+                                                >Female</option>
+                                                <option value="other" <%=oldInput.gender==='other' ? 'selected' : "" %>
+                                                    >Other</option>
+                                        
+
+                                    
+
+                            </select>
+                        </div>
+
+                        <div class="form-item">
+                            <label for="dateOfBirth" class="form-label"> Enter Birth Date:<sup
+                                    class="sup-text">*</sup></label>
+                            <input type="date" name="dateOfBirth" id="dateOfBirth" class="form-input" required
+                                max="<%= new Date().toISOString().split('T')[0] %>"
+                                value="<%=  oldInput.dateOfBirth ? new Date(oldInput.dateOfBirth).toISOString().split('T')[0]  :'' %>">
+                        </div>
+                        <div class="form-item">
+                            <label for="contactNumber" class="form-label"> Enter Contact Number:<sup
+                                    class="sup-text">*</sup></label>
+                            <input type="text" name="contactNumber" id="contactNumber" class="form-input"
+                                value="<%= oldInput.contactNumber%>" required maxlength="10" minlength="10"
+                                placeholder="Enter Contact Number">
+                        </div>
+
+                        <div class="form-item">
+                            <label for="collageName" class="form-label"> Enter Collage Name:<sup
+                                    class="sup-text">*</sup></label>
+                            <input type="text" name="collageName" id="collageName" class="form-input"
+                                value="<%= oldInput.collageName%>" required maxlength="70" minlength="3"
+                                placeholder="Enter Collage Name">
+                        </div>
+
+                        <div class="form-item">
+                            <label for="department" class="form-label"> Enter Department Name:<sup
+                                    class="sup-text">*</sup></label>
+                            <input type="text" name="department" id="department" class="form-input"
+                                value="<%= oldInput.department%>" required maxlength="10" minlength="2"
+                                placeholder="Enter Department">
+                        </div>
+
+                        
+
+                      
+
+                        <div class="btn-submit">
+                           
+                                    <button type="submit" id="submitButton">
+                                      Edit Profile
+                                    </button>
+                        </div>
+
+                    </form>
+        </div>
+        <%- include("../common/footer.ejs") %>

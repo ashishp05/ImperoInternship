@@ -1,0 +1,56 @@
+<%- include("../common/header.ejs") %>
+    <link rel="stylesheet" href="/css/book.css">
+    <link rel="stylesheet" href="/css/details.css">
+    <link rel="stylesheet" href="/css/filter.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <%- include("../common/navbar.ejs") %>
+                <%-include("../common/error.ejs") %>
+                    <div class="add-btn">
+                        <h2 class="sub-heading">Category Details</h2>
+                        <%-include("../common/filter-category.ejs") %>
+                      <% if( user.memberType == "admin") {%>
+                        <a href="/book/add-book-category">Add New Category</a>
+                     <%} %>
+                    </div> 
+                    <%= console.log("category" , category) %>
+                    <div class="main-details"> 
+                        <table class="table-main">
+                            <thead class="main-row">
+                                <tr>
+                                    <th>Category  <span><i id="sortCategoryDetailsIcon" class="fa-solid fa-sort"></i></span></th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-body">
+                                <% category.forEach(cat => { %>
+                                    <tr>
+                                        <td><%= cat.category %></td>
+                                        <th>
+                                            <div class="actions">
+                                                <a href="/book/edit-book-category/<%= cat._id %>?edit=true"
+                                                    class="edit-btn">Edit</a>
+
+                                                <a href="/book/delete-book-category/<%= cat._id %>" id="deleteBookBtn"
+                                                    class="delete-btn">Delete</a>
+
+                                            </div>
+                                        </th>
+                                    </tr>
+                                <% }) %>
+                            </tbody>
+                        </table>
+                        
+                    </div>
+                   
+                    <%- include("../pagination/book-pagination.ejs") , {currentPage : currentPage , lastPage
+                        : lastPage } %>
+                    
+        </div>
+        <script src="/js/sort-category.js"></script>
+        <script src="/js/reset-book-filter.js"></script>
+    </body>
+
+    </html>

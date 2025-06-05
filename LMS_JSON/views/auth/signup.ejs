@@ -1,0 +1,88 @@
+<%- include("../common/header.ejs") %>
+    <link rel="stylesheet" href="/css/book.css">
+    
+   
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/styles.css"> <!-- External CSS file -->
+    <link rel="stylesheet" href="/css/auth.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/error.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+</head>
+
+    <body>
+        <div class="container">
+      
+            <%- include("../common/navbar.ejs") %>
+                <%-include("../common/error.ejs") %>
+
+                
+                        <div class="main-box">
+                            <div class="auth-box">
+                                <div class="auth-tabs">
+                                    <div  class="auth-tab ">Log In</div>
+                                    <div    class="auth-tab active">Sign Up</div>
+                                </div>
+                                
+                                
+                                <form id="signupForm" class="auth-form active" action="/auth/send-otp" method="post">
+                                    <div class="input-group">
+                                        <input type="text" name="name" placeholder="Username" class="input-field">
+                                        <i class="ri-user-line"></i>
+                                    </div>
+                    
+                                    <div class="input-group">
+                                        <input type="email"  name="email" placeholder="Email" class="input-field">
+                                        <i class="ri-mail-line"></i>
+                                    </div>
+                    
+                                    <div class="input-group">
+                                        <input type="password" name="password" placeholder="Password" class="input-field">
+                                        <i class="ri-lock-line"></i>
+                                        <button type="button" onclick="togglePassword(this)">
+                                            <i class="fa-regular fa-eye"></i>
+                                        </button>
+                                    </div>
+                                    <div class="input-group">
+                                        <input type="password" name="confirmPassword" placeholder="confirmPassword" class="input-field">
+                                        <i class="ri-lock-line"></i>
+                                        <button type="button" onclick="togglePassword(this)">
+                                            <i class="fa-regular fa-eye"></i>
+                                        </button>
+                                    </div>
+                    
+                                   
+                                    <button type="submit" class="btn-primary">Send otp</button>
+                                </form>
+                            </div>
+                            <div class="image-box">
+                           <img src="/images/signuphero.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                
+                    <script src="/js/script.js"></script> <!-- External JS file -->
+                 <script>
+
+
+function togglePassword(button) {
+    const input = button.parentElement.querySelector('input');
+    const icon = button.querySelector('i');
+    
+    if (input.type === 'password') {
+        input.type = 'text';
+      
+        icon.classList.replace('fa-regular fa-eye', 'fa-regular fa-eye-slash');
+    } else {
+        input.type = 'password';
+        icon.classList.replace('fa-regular fa-eye-slash ', 'fa-regular fa-eye');
+    }
+}
+
+
+                 </script>
+                
+        <%- include("../common/footer.ejs") %>

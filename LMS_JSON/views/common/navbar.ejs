@@ -1,0 +1,31 @@
+<nav class="navbar">
+
+    <div class="nav-items">
+        <span class="nav-logo"> E-LibRary </span>
+    </div>
+    <div class="nav-items">
+        <a href="/dashboard">Dashboard</a>
+        <a href="/book/book-details" class="nav-link ">Book</a>
+        <a href="/member/member-details" class="nav-link ">Member</a>
+        <% if (typeof user !== "undefined" && user && user.memberType === "admin") { %>
+            <a href="/record/record-details" class="nav-link ">Record</a>
+            <a href="/book/category-details" class="nav-link ">Category</a>
+        <% } %>
+
+    </div>
+
+    <div class="nav-items ">
+        <% if (typeof user !== "undefined" && user) {%>
+               <div class="tooltip">
+                <a href="/auth/my-profile" class="tooltiptext"><i class="fa-solid fa-user"></i></a>
+                
+               </div>
+
+            <a href="/auth/logout" class="nav-link ">Logout</a>
+      <%}else { %>
+        <a href="/auth/signup">Signup</a>
+        <a href="/auth/login" class="nav-link ">Login</a>
+        <%} %>
+    </div>
+
+</nav>

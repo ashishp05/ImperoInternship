@@ -1,0 +1,83 @@
+
+<%-include("./pagination.ejs") %>
+<% if(sort) { %>
+     
+    <div class="pagination">
+        <div class="pag-btn">
+            <% if (currentPage> 1) { %>
+                <a
+                    href="?field=<%= oldInput.field %>&sortOrder=<%= oldInput.sortOrder %>&page=<%= currentPage - 1 %>&totalItems=<%= totalItems %>">Prev</a>
+                <% } else { %>
+                    <span class="disabled">Prev</span>
+                    <% } %>
+        </div>
+        <div class="pag-btn">
+            <span>Page <%= currentPage %> of <%= lastPage %></span>
+        </div>
+        <div class="pag-btn">
+            <% if (currentPage < lastPage) { %>
+                <a
+                    href="?field=<%= oldInput.field %>&sortOrder=<%= oldInput.sortOrder %>&page=<%= currentPage + 1 %>&totalItems=<%= totalItems %>">Next</a>
+                <% } else { %>
+                    <span class="disabled">Next</span>
+                    <% } %>
+        </div>
+
+       
+    </div>
+    
+
+    <% } else{ %>
+        <% if( !filter ) {%>
+            <div class="pagination">
+
+                <div class="pag-btn">
+                    <% if (currentPage> 1) { %>
+                        <a href="?page=<%= currentPage-1 %>&totalItems=<%= totalItems%>" class="link">Prev</a>
+                        <% } else { %>
+                            <span class="disabled link">Prev</span>
+                            <% } %>
+                </div>
+            
+                <span class="page-view">page <%= currentPage %> of <%= lastPage %></span>
+            
+            
+                <div class="pag-btn">
+                    <% if (currentPage < lastPage) { %>
+                        <a href="?page=<%= currentPage + 1 %>&totalItems=<%= totalItems %>" class="link">Next</a>
+                        <% } else { %>
+                            <span class="disabled link">Next</span>
+                            <% } %>
+                </div> 
+
+                
+            
+            </div>
+            
+            <% }else {%>
+                <div class="pagination">
+                    <div class="pag-btn">
+                        <% if (currentPage> 1) { %>
+                            <a href="?filter=<%= oldInput.filter%>&page=<%= currentPage + 1 %>&totalItems=<%= totalItems %>">Next</a>
+                        
+                            <% } else { %>
+                                <span class="disabled">Prev</span>
+                                <% } %>
+                    </div>
+                    <div class="pag-btn">
+                        <span>Page <%= currentPage %> of <%= lastPage %></span>
+                    </div>
+                    <div class="pag-btn">
+                        <% if (currentPage < lastPage) { %>
+                            <a href="?name=<%= oldInput.name%>&page=<%= currentPage + 1 %>&totalItems=<%= totalItems %>">Next</a>
+                           
+                            <% } else { %>
+                                <span class="disabled">Next</span>
+                                <% } %>
+                    </div>
+                </div>
+               
+                    <%} %>
+                        <%} %>
+</div>
+</div>  

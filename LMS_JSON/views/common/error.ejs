@@ -1,0 +1,26 @@
+
+<div class="err-message">
+    <% if (error) { %>
+        <script>
+            // Function to show the error message in a toast
+            function showError(errorMessage) {
+                Toastify({
+                    text: errorMessage,
+                    duration: 4000,
+                    offset: {
+                        y: 50
+                    },
+                    position: "center",
+                    style: {
+                        background: "linear-gradient(to right, #FF0000, #FF0055)"
+                    },
+                    close: true,
+                    stopOnFocus: true,
+                }).showToast();
+            }
+            showError("<%= error %>");
+        </script>
+        <% } %>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>

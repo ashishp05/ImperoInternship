@@ -1,0 +1,12 @@
+<form id="filterForm" action="/record/filter-record" method="get">
+  <div id="filter-input">
+
+    <input type="text" name="filter" id="filterRecord" placeholder="search..." maxlength="25"
+      value="<%= oldInput && oldInput.filter ? oldInput.filter : '' %>"
+      class="<%= oldInput && oldInput.filter ? 'input-filtered' : '' %>">
+
+
+    <button type="submit">Submit</button>
+    <button type="reset" id="resetRecordFilter">Reset</button>
+  </div>
+</form>

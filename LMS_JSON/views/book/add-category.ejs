@@ -1,0 +1,34 @@
+<%- include("../common/header.ejs") %>
+    <link rel="stylesheet" href="/css/book.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <%- include("../common/navbar.ejs") %>
+                <%-include("../common/error.ejs") %>
+                    <form action="/book/<%if(edit){%>edit-book-category<%}else{%>add-book-category<%}%>" method="post"
+                        class="form-control" id="form" onsubmit="disableButton()">
+                       
+                        <div class="form-item">
+                            <label for="category" class="form-label"> Enter Book Category:<sup
+                                    class="sup-text">*</sup></label>
+                            <input type="text" name="category" id="category" class="form-input"
+                                value="<%= oldInput.category%>" required maxlength="25" minlength="3"
+                                placeholder="Enter a category">
+                        </div>
+
+                       
+                       
+
+                        <div class="btn-submit">
+                            <% if(edit){ %>
+                                <input type="hidden" name="id" value="<%=category._id %>">
+                                <% } %>
+                                    <button type="submit" id="submitButton">
+                                        <% if(edit) { %> Edit Book Category <% } else {%> Add Book Category <% } %>
+                                    </button>
+                        </div>
+
+                    </form>
+        </div>
+        <%- include("../common/footer.ejs") %>

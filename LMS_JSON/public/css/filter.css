@@ -1,0 +1,187 @@
+#showFilterBtn {
+  background-color: #393e46;
+  color: #eeeeee;
+  border: none;
+  padding: 10px 10px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 7px;
+  transition: 0.3s;
+  margin: 25px 50px 25px 25px;
+}
+
+#showFilterBtn:hover {
+  background-color: #212121;
+}
+
+#filterForm,
+#filterFormOnHomeMember,
+#filterFormOnHome {
+  width: 40%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#filter-input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+#filterForm input,
+#filterFormOnHomeMember input,
+#filterFormOnHome input,
+#filterFormOnHomeMember select,
+#filterFormOnHome select,
+#filterForm select {
+  width: 100%;
+  padding: 8px  150px 8px   8px;
+  margin-top: 5px;
+  border: 1px solid #0092ca;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #212121;
+  gap: 5px;
+}
+
+#filterForm button,
+#filterFormOnHomeMember button,
+#filterFormOnHome button {
+  background-color: #222831;
+  color: #eeeeee;
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 5px;
+  transition: 0.3s;
+  width: 49%;
+}
+
+#filterForm button:hover,
+#filterFormOnHomeMember button:hover,
+#filterFormOnHome button:hover {
+  background-color: #212121;
+  color: #fff;
+}
+
+.filterInput {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #0092ca;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #212121;
+  gap: 5px;
+}
+
+.filter-btn {
+  font-size: 20px;
+  background-color: transparent;
+  text-decoration: none;
+  color: #fff;
+  margin: 5px;
+}
+
+.header-cell {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+h3 {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#status-filter {
+  padding: 8px 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+#status-filter:hover {
+  border-color: #2563eb;
+}
+
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#filter-modal {
+  display: none;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  min-width: 280px;
+  position: absolute;
+  top: 40px;
+  left: 0;
+  z-index: 1000;
+}
+
+.modal-content {
+  margin-bottom: 16px;
+}
+
+.modal-content h3 {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.modal-content input[type="text"] {
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  transition: border-color 0.3s ease;
+}
+
+.modal-content input[type="text"]:hover {
+  border-color: #2563eb;
+}
+
+.modal-content input[type="text"]:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+#asc-btn {
+  width: 30px;
+  height: 20px;
+}

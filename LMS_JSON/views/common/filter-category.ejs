@@ -1,0 +1,14 @@
+<form id="filterForm" action="/book/filter-category" method="get">
+
+    <div id="filter-input">
+
+        <input type="text" id="filter" name="filter" placeholder="Search.."  maxlength="25"
+            value="<%= oldInput && oldInput.filter ? oldInput.filter : '' %>"
+            class="<%= oldInput && oldInput.filter ? 'input-filtered' : '' %>">
+
+
+
+        <button type="submit">Submit</button>
+        <button type="reset" id="resetBookFilter">Reset</button>
+    </div>
+</form>

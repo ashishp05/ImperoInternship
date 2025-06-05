@@ -1,0 +1,118 @@
+<%- include("../common/header.ejs") %>
+    <link rel="stylesheet" href="/css/book.css">
+    <link rel="stylesheet" href="/css/record-details.css">
+    <link rel="stylesheet" href="/css/filter.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <%- include("../common/navbar.ejs") %>
+                <%- include("../common/error.ejs") %>
+                    <div class="add-btn">
+                        <h2 class="sub-heading">Record Details</h2>
+                        <%-include("../common/filter-record.ejs") %>
+                        <a href="/record/add-record">Add New Record</a>
+                    </div>
+                    <div class="memberFilter">
+                    </div>
+                    <div class="book-details">
+
+
+                        <table class="table-main">
+                            <thead class="main-row">
+                                <tr>
+                                    <th>UID <i id="sortUidIconRecord" class="fa-solid fa-sort"></i></th>
+                                    <th>MEMBER NAME <i id="sortNameIconRecord" class="fa-solid fa-sort"></i></th>
+                                    <th>MEMBER EMAIL </th>
+                                    <th>BOOKS </th>
+                                    <th>ISSUEDATE </th>
+                                    <th>DUEDATE</th>
+                                    <th>BOOK STATUS</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                           
+                            <% if (record.length > 0) {%>
+                                <tbody class="table-body">
+                                    <% record.forEach((r)=> { %>
+                                        <% r.book.forEach((b, index)=> { %>
+                                            <tr>
+                                                <% if (index===0) { %>
+                                                   
+                                                    <th rowspan="<%= r.book.length %>">
+                                                        <%= r.memberId.uId %>
+                                                    </th>
+                                                    <th rowspan="<%= r.book.length %>">
+                                                        <%= r.memberId.name %>
+                                                    </th>
+                                                    <th rowspan="<%= r.book.length %>">
+                                                        <%= r.memberId.email %>
+                                                    </th>
+                                                    <% } %>
+    
+                                                       
+                                                        <th>
+                                                            <% if (r.bookdetails && r.bookdetails.length> 0) { %>
+                                                                <%= r.bookdetails[index]?.title || "No Title Available" %>
+                                                                    <% } else { %>
+                                                                        <%= b.bookId.title || "No Title Available" %>
+                                                                            <% } %>
+                                                        </th>
+    
+                                                      
+                                                        <th>
+                                                            <%= new Date(b.issueDate).toISOString().split('T')[0] %>
+                                                        </th>
+    
+                                                       
+                                                        <th>
+                                                            <%= new Date(b.dueDate).toISOString().split('T')[0] %>
+                                                        </th>
+    
+                                                       
+                                                        <th>
+                                                            <%= b.status %>
+                                                        </th>
+    
+                                                        
+                                                        <th>
+                                                            <div class="actions">
+                                                                <a href="/record/edit-record/<%= r._id %>/<%= b.bookId._id %>?edit=true"
+                                                                    class="edit-btn">Edit</a>
+                                                                <a href="/record/delete-record/<%= r._id %>/<%= b.bookId._id %>"
+                                                                    class="delete-btn" id="showToastButton">Delete</a>
+                                                            </div>
+                                                        </th>
+                                            </tr>
+                                            <% }); %>
+                                                <% }); %>
+                                </tbody> 
+    
+    
+                                <%} else { %> 
+                                    <tbody class="table-body">
+                                       
+                                          <th colspan="9">No Record Found</th>
+                                      
+                                    </tbody>
+                                    <%}  %>
+    
+
+                        </table>
+
+                        <!-- Pagination  -->
+
+
+
+                    </div>
+
+
+                                    <%- include("../pagination/record-pagination.ejs") , {currentPage : currentPage , lastPage :
+                                        lastPage } %>
+        </div>
+        <script src="/js/sort-record.js"></script>
+        <script src="/js/reset-record-filter.js"></script>
+        <script src="/js/filter-record-btn.js"></script>
+    </body>
+
+    </html>

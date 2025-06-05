@@ -1,0 +1,143 @@
+.container {
+    background-color: #eeeeee;
+    height: 100vh;
+  }
+
+.main-box
+{   
+    display: flex;
+    align-items: start;
+    justify-content: space-around;
+    width:80%;
+    margin: auto;
+    padding: 20px 10px;
+    margin-top: 150px;
+    background: #fff;
+    border-radius: 12px;
+}
+.auth-box {
+    width: 40%;
+    position: relative;
+    padding: 32px;
+}
+
+.auth-tabs {
+    display: flex;
+    margin-bottom: 48px;
+  
+}
+.auth-tab button
+{
+    background-color: #fff;
+    border: none;
+}
+
+.auth-tab {
+    font-size: 18px;
+    font-weight: 500;
+    padding-bottom: 8px;
+    cursor: pointer;
+    margin-right: 24px;
+    transition:  color 0.8s, border-bottom 0.2s ease-in;
+}
+
+.auth-tab.active {
+    border-bottom: 3px solid #0092ca;
+    color: #0092ca;
+    font-weight: 700;
+}
+
+.auth-form {
+    display: none;
+}
+
+.auth-form.active {
+    display: block;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 14px;
+}
+
+.input-field {
+    width: 100%;
+    padding: 12px 16px;
+    padding-left: 40px;
+    border: 1px solid #0092ca;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.input-field:focus {
+    border-color: #000;
+}
+
+.input-group i {
+    position: absolute;
+    top: 50%;
+    left: 16px;
+    transform: translateY(-50%);
+    color: #eee;
+}
+
+button[type="button"] {
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #000;
+    z-index: -10;
+}
+
+
+
+.forgot-password {
+    text-align: end;
+    margin-top: 10px;
+}
+
+.forgot-password a {
+    color: #0092ca;
+    text-decoration: none;
+}
+
+.forgot-password a:hover {
+    text-decoration: underline;
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 12px;
+    background-color: #393e46;
+    color: #eee;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+.image-box {
+    width: 45%;
+    margin: 10px;
+    position: relative;
+}
+
+.image-box img {
+    width: 100%;
+    height: 390px;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    object-fit: cover;
+    object-position: center;
+}

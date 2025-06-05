@@ -1,0 +1,162 @@
+<%- include("../common/header.ejs") %>
+    <link rel="stylesheet" href="/css/error.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="/css/main.css">
+   <link rel="stylesheet" href="/css/record-details.css">
+   
+    </head>
+
+    <body>
+        <div class="dashboard">
+            <%- include("../common/navbar.ejs") %>
+                <%- include("../common/error.ejs") %>
+                    <p class="admin">Welcome, <%= user.name %></p>
+                    <% if( user.memberType == "admin") {%>
+                       <div class="dashboard-container">
+                        <div class="formLinks">
+                         <a href="/book/add-book-category" >Add Category</a>
+                        <a href="/book/add-book" >Add Book</a>
+                        <a href="/member/add-member" >Add Member</a>
+                        <a href="/record/add-record" >Add Record</a>
+                        <a href="/book/category-details" >Category Details</a>
+                        <a href="/book/book-details" >Book Details</a>
+                        <a href="/member/member-details" >Member Details</a>
+                        <a href="/record/record-details" >Record Details</a>
+                        </div>
+                 <div class="cards-container">
+                    <div class="cards" style="background-color: rgba(140, 0, 233, 0.801);">
+                        <h2 class=" card-text" style="color: azure;"> <%= book.length %>
+                        <h2 class="card-number">Total <p>   </p>    Books</h2>
+                        </h2>
+                    </div>
+                    <div class="cards" style="background-color: rgba(215, 7, 225, 0.801);">
+                        <h2 class=" card-text" style="color: azure;"> <%= member.length %>
+                        <h2 class="card-number">Total  <p>   </p>  Members </h2>
+                        </h2>
+                    </div>
+
+                    <div class="cards" style="background-color: rgb(16, 225, 16);">
+                        <h2 class=" card-text" style="color: azure;"> <%= active %>
+                        <h2 class="card-number">Active Members </h2>
+                        </h2>
+                    </div>
+                    <div class="cards" style="background-color: rgb(255, 77, 77);">
+                        <h2 class=" card-text" style="color: azure;"> <%= inactive %>
+                        <h2 class="card-number">Inactive Members</h2>
+                        </h2>
+                    </div>
+                    </div>
+                       </div>
+                    <% } else {%>
+
+                        <div class="cards-container">
+
+                            <div class="cards" style="background-color: rgba(140, 0, 233, 0.801);">
+                                <h2 class=" card-text" style="color: azure;"> <%= record.length >0  ? record[0].book.length : '0'  %>
+                                <h2 class="card-number">Total Books</h2>
+                                </h2>
+                            </div>
+                            <div class="cards" style="background-color: rgba(215, 7, 225, 0.801);">
+                                <h2 class=" card-text" style="color: azure;"> <%= borrowedCount  %>
+                                <h2 class="card-number">Borrowed Books</h2>
+                                </h2>
+                            </div>
+                            <div class="cards" style="background-color: rgb(16, 225, 16);">
+                                <h2 class=" card-text" style="color: azure;"> <%= returnedCount %>
+                                <h2 class="card-number">Returned Books </h2>
+                                </h2>
+                            </div>
+                            <div class="cards" style="background-color: rgb(255, 77, 77);">
+                                <h2 class=" card-text" style="color: azure;"> <%= delayedCount %>
+                                <h2 class="card-number">Delayed Books</h2>
+                                </h2>
+                            </div>
+                        </div> 
+                            
+                            <table class="table-main">
+                        <caption style="text-align: left; margin-bottom: 20px; font-size: 20px; margin-top: 20px;">You have following Books are borrowed. </caption>
+                        <thead class="main-row">
+                            <tr>
+                               
+                                <th>BOOK NAME </th>
+                                <th>ISSUEDATE </th>
+                                <th>DUEDATE</th>
+                                <th>BOOK STATUS</th>
+                              
+                            </tr>
+                        </thead>
+                       
+                        <% if ( record && record.length > 0) {%>
+                            <tbody class="table-body"  >
+                                <% record.forEach((r)=> { %>
+                                    <% r.book.forEach((b, index)=> { %>
+                                        <tr style="padding: 10px 20px;">
+                                            
+
+                                                   
+                                                    <th style="padding: 20px 20px; font-size: 20px;"> 
+                                                        <% if (r.bookdetails && r.bookdetails.length> 0) { %>
+                                                            <%= r.bookdetails[index]?.title || "No Title Available" %>
+                                                                <% } else { %>
+                                                                    <%= b.bookId.title || "No Title Available" %>
+                                                                        <% } %>
+                                                    </th>
+
+                                                  
+                                                    <th style="padding: 20px 20px; font-size: 20px;">
+                                                        <%= new Date(b.issueDate).toISOString().split('T')[0] %>
+                                                    </th>
+
+                                                   
+                                                    <th style="padding: 20px 20px; font-size: 20px;">
+                                                        <%= new Date(b.dueDate).toISOString().split('T')[0] %>
+                                                    </th>
+
+                                                   
+                                                    <th style="padding: 20px 20px; font-size: 20px;">
+                                                        <%= b.status %>
+                                                    </th>
+
+                                                    
+                                                  
+                                        </tr>
+                                        <% }); %>
+                                            <% }); %>
+                            </tbody> 
+
+
+                            <%} else { %> 
+                                <tbody class="table-body">
+                                   
+                                      <th colspan="9">No Record Found</th>
+                                  
+                                </tbody>
+                                <%}  %>
+
+
+                    </table>
+                        <% }%>
+                    
+                 </div> 
+                 <div class="dashboard-container">
+                    
+                 </div>
+                 
+
+                   
+
+                
+                  
+
+
+
+
+
+                    <script src="/js/sort.js"></script>
+
+
+                    <script src="/js/reset-member-filter.js"></script>
+        </div>
+    </body>
+
+    </html>

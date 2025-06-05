@@ -1,0 +1,43 @@
+<%- include("./common/header.ejs") %>
+    <link rel="stylesheet" href="/css/error.css">
+    <link rel="stylesheet" href="/css/details.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/filter.css">
+    <style>
+
+    </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <%- include("./common/navbar.ejs") %>
+                <%- include("./common/error.ejs") %>
+                    <p class="heading">Welcome to E-LibRary</p>
+
+                    <div class="items-details">
+                        <h2 class="sub-heading">Member Details</h2>
+                        <h2 class=" sub-heading"> Total Member : <%= member.length %>
+                        </h2>
+                    </div>
+                   
+
+                    <div class="items-details">
+                        <h2 class=" sub-heading">Book Details</h2>
+                        <h2 class=" sub-heading"> Total Books : <%= book.length %>
+                        </h2>
+                    </div>
+                      
+
+
+
+
+
+
+                    <script src="/js/sort.js"></script>
+
+
+                    <script src="/js/reset-member-filter.js"></script>
+        </div>
+    </body>
+
+    </html>

@@ -1,0 +1,19 @@
+<form id="filterForm" action="/book/preffered-book/filter" method="get">
+
+    <div id="filter-input">
+
+        <input type="text" id="filter" name="filter" placeholder="Search.."  maxlength="25"
+            value="<%= oldInput && oldInput.filter ? oldInput.filter : '' %>"
+            class="<%= oldInput && oldInput.filter ? 'input-filtered' : '' %>"/>
+
+            <select name="category" id="category" >
+                <option value="" >category..</option>
+                 <% category.forEach ( b =>{ %>
+                 <option value="<%= b.category %>"   <%=oldInput.category==b.category ? 'selected' : "" %>><%= b.category %></option>
+                <%  }) %>
+               </select>
+
+        <button type="submit">Submit</button>
+        <button type="reset" id="resetBookFilter">Reset</button>
+    </div>
+</form>

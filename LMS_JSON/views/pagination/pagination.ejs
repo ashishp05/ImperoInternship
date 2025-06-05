@@ -1,0 +1,32 @@
+<div class="main-pagination">
+    <div class="pag-btn">
+        <form id="itemsPerPageForm" method="get">
+            <select name="totalItems" id="totalItems" class="form-input-text" onchange="submitForm()">
+                <option value="0">Select Number of Data</option>
+                <option value="3" <%= oldInput.totalItems === '3' ? 'selected' : '' %>>3</option>
+                <option value="5" <%= oldInput.totalItems === '5' ? 'selected' : '' %>>5</option>
+                <option value="7" <%= oldInput.totalItems === '7' ? 'selected' : '' %>>7</option>
+                <option value="10" <%= oldInput.totalItems === '10' ? 'selected' : '' %>>10</option>
+                <option value="20" <%= oldInput.totalItems === '20' ? 'selected' : '' %>>20</option>
+                <option value="30" <%= oldInput.totalItems === '30' ? 'selected' : '' %>>30</option>
+                <option value="50" <%= oldInput.totalItems === '50' ? 'selected' : '' %>>50</option>
+                <option value="100" <%= oldInput.totalItems === '100' ? 'selected' : '' %>>100</option>
+                
+            </select>
+        </form>
+        
+        <script>
+            function submitForm() {
+                var totalItems = document.getElementById('totalItems').value;
+                var baseUrl = window.location.origin + window.location.pathname;
+                var urlParams = new URLSearchParams(window.location.search);
+                urlParams.set('totalItems', totalItems);
+                var fullUrl = baseUrl + '?' + urlParams.toString();
+                window.location.href = fullUrl;
+            }
+        </script>
+    
+        
+    </div>
+    <div>
+        

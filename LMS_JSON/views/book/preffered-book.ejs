@@ -1,0 +1,155 @@
+<%- include("../common/header.ejs") %>
+    <link rel="stylesheet" href="/css/book.css">
+    <link rel="stylesheet" href="/css/details.css">
+    <link rel="stylesheet" href="/css/filter.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <%- include("../common/navbar.ejs") %>
+                <%-include("../common/error.ejs") %>
+                    <div class="add-btn">
+                        <h2 class="sub-heading">Book Details</h2>
+                        <%-include("../common/filter-pbook.ejs") %>
+                        <% if( user.memberType == "admin") {%>
+                            <a href="/book/add-book">Add New Book</a>
+                            <%} %>
+                        </div>
+                        <div>
+                            
+                        </div>
+                        <a class="preffered" href="/book/preffered-book-details">Preffered Book</a>
+                    <div class="main-details">
+
+                        <table class="table-main">
+                            <thead class="main-row">
+                                <tr>
+                                    <th>
+                                        Title
+                                        <span><i id="sortTitleIconP" class="fa-solid fa-sort"></i></span>
+                                    </th>
+                                    <th>
+                                        Author
+                                        <span><i id="sortAuthorIconP" class="fa-solid fa-sort"></i></span>
+                                    </th>
+                                    <th>
+                                        Category
+                                        <span><i id="sortCategoryIconP" class="fa-solid fa-sort"></i></span>
+                                    </th>
+                                    <th>
+                                        pubDate
+                                        <span><i id="sortpubDateIconP" class="fa-solid fa-sort"></i></span>
+                                    </th>
+                                   
+                                    <% if( user.memberType == "admin") {%>
+                                    <th>
+                                        Quantity
+                                        <span><i id="sortquantityIconP" class="fa-solid fa-sort"></i></span>
+                                    </th>
+                                    <%} %>
+                                   
+                                    <th>
+                                        Available
+                                        <span><i id="sortAvailableIconP" class="fa-solid fa-sort"></i></span>
+                                    </th>
+                                    <% if( user.memberType == "admin") {%>
+                                    <th>
+                                        Borrowed
+                                        <span><i id="sortBorrowedIconP" class="fa-solid fa-sort"></i></span>
+                                    </th>
+                                    <th>
+                                        Maintenance
+                                        <span><i id="sortmaintenanceIconP" class="fa-solid fa-sort"></i></span>
+                                    </th>
+                                    <%} %>
+
+                                    <th>Status
+                                        <span><i id="sortStatusIconP" class="fa-solid fa-sort"></i></span>
+                                    </th>
+                                       <% if( user.memberType == "admin") {%>
+                                    <th>Action</th>
+                                    <%} %>
+                                 
+                                </tr>
+                            </thead>
+                          <% if (book.length > 0) {%>
+                          
+
+                            <tbody class="table-body">
+                                <% book.map( b=>{ %>
+                                    <tr>
+                                        <th>
+                                            <%= b.title %>
+                                        </th>
+                                        <th>
+                                            <%= b.author %>
+                                        </th>
+                                        <th>
+                                            <%= b.category.category %>
+                                        </th>
+                                        <th>
+                                            <%=new Date(b.publicationDate).toISOString().split('T')[0] %>
+                                        </th>
+                                        <% if( user.memberType == "admin") {%>
+                                       
+                                       
+                                        <th>
+                                            <%= b.quantity %>
+                                        </th>
+                                        <%} %>
+
+                                      
+                                        <th>
+                                            <%= b.availableQuantity %>
+                                        </th>
+                                        <% if( user.memberType == "admin") {%>
+                                        <th>
+                                            <%= b.borrowedQuantity %>
+                                        </th>
+                                        <th>
+                                            <%= b.maintenanceQuantity %>
+                                        </th>
+                                        <%} %>
+                                        <th>
+                                            <%= b.status %>
+                                        </th>
+                                        <% if( user.memberType == "admin") {%>
+                                        <th>
+                                            <div class="actions">
+                                                <a href="/book/edit-book/<%= b._id %>?edit=true"
+                                                    class="edit-btn">Edit</a>
+
+                                                <a href="/book/delete-book/<%= b._id %>" id="deleteBookBtn"
+                                                    class="delete-btn">Delete</a>
+
+                                            </div>
+                                        </th>
+                                        <%} %>
+                                        
+                                    </tr>
+
+                                    <% }) %>
+
+                            </tbody> 
+
+                            <%} else { %> 
+                                <tbody class="table-body">
+                                   
+                                      <th colspan="9">No Book Found</th>
+                                  
+                                </tbody>
+                                <%}  %>
+
+                        </table>
+                        <%- include("../pagination/book-pagination.ejs") , {currentPage : currentPage , lastPage
+                            : lastPage } %>
+                        
+                    </div>
+
+
+        </div>
+        <script src="/js/sort-pbook.js"></script>
+        <script src="/js/reset-book-filter.js"></script>
+    </body>
+
+    </html>

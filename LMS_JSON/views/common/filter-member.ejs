@@ -1,0 +1,11 @@
+<form id="filterForm" action="/member/filter-member" method="get">
+
+  <div id="filter-input">
+
+    <input type="text" id="filterMember" name="filter" placeholder="Search.."  maxlength="25"
+    value="<%= oldInput && oldInput.filter ? oldInput.filter : '' %>"
+    class="<%= oldInput && oldInput.filter ? 'input-filtered' : '' %>">
+    <button type="submit">Submit</button>
+    <button type="reset" id="resetMemberFilter">Reset</button>
+  </div>
+</form>
